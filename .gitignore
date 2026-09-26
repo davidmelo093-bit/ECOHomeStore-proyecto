@@ -1,0 +1,36 @@
+# Monorepo Global .gitignore
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Flutter / Dart
+mobile-flutter/.dart_tool/
+mobile-flutter/build/
+mobile-flutter/.flutter-plugins
+mobile-flutter/.flutter-plugins-dependencies
+mobile-flutter/.packages
+
+# Environment variables
+.env
+.env.local
+backend/.env
+web-react/.env.local
+
+# Build artifacts
+dist/
+build/
+*.apk
+*.aab
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.log
+
+# Carpetas
+*.docs

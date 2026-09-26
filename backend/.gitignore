@@ -1,0 +1,26 @@
+node_modules/
+.env
+Ignore/
+
+# Build outputs
+dist/
+build/
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+docs/

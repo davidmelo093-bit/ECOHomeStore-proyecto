@@ -1,0 +1,12 @@
+# .gitignore para docs/context
+
+# Borrador de notas temporales del agente
+*.draft.md
+*.tmp.md
+*.bak
+
+# Archivos de sesión generados automáticamente por herramientas locales
+.session_*
+
+# Exportaciones locales que no deben versionarse
+export/

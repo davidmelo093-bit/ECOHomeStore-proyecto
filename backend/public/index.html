@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Interno EcoHome Store - Prueba Socket.IO</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
+        #chat-box { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; background: #fff; margin-bottom: 10px; border-radius: 5px; }
+        .message { margin-bottom: 8px; }
+        .user { font-weight: bold; color: #2e7d32; }
+        .time { font-size: 0.8em; color: #888; margin-left: 5px; }
+        input[type="text"] { padding: 8px; margin-right: 5px; }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h2>Chat Interno Corporativo - EcoHome Store</h2>
+    <div>
+        <label>Usuario: </label>
+        <input type="text" id="username" placeholder="Ej. ventas_David" value="Usuario_Demo">
+    </div>
+    <br>
+    <div id="chat-box"></div>
+
+    <form id="chat-form">
+        <input type="text" id="message-input" placeholder="Escribe un mensaje..." required style="width: 70%;">
+        <button type="submit">Enviar Mensaje</button>
+    </form>
+
+    <script>
+        const socket = io();
+
+        const chatBox = document.getElementById('chat-box');
+        const chatForm = document.getElementById('chat-form');
+        const messageInput = document.getElementById('message-input');
+        const usernameInput = document.getElementById('username');
+
+        function renderMessage(msg) {
+            const div = document.createElement('div');
+            div.className = 'message';
+            div.innerHTML = `<span class="user">${msg.user}:</span> ${msg.text} <span class="time">(${msg.timestamp})</span>`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // 1. Cargar historial al conectarse
+        socket.on('messages-history', (history) => {
+            chatBox.innerHTML = '';
+            history.forEach(renderMessage);
+        });
+
+        // 2. Escuchar mensajes nuevos transmitidos por el servidor mediante broadcast
+        socket.on('new-message', (data) => {
+            renderMessage(data);
+        });
+
+        // 3. Emitir el evento 'new-message' al enviar el formulario
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = messageInput.value.trim();
+            const user = usernameInput.value.trim() || 'Anónimo';
+
+            if (text) {
+                socket.emit('new-message', { user, text });
+                messageInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

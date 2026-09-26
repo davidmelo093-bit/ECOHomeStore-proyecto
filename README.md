@@ -184,8 +184,8 @@ La base de datos se inicializa con dos perfiles de prueba listos para validar au
 
 | Rol | Correo Electrónico | Contraseña en Claro | Hash Almacenado (`bcrypt`) | Permisos |
 |---|---|---|---|---|
-| **Administrador** | `admin@store.com` | `admin123` | `$2b$10$./THOfyDyMIHPZnXhQau3u3FOj1japxJ80nq/wqK2sZtZOhcuASDu` | Acceso total: Crear, editar y eliminar productos (`POST`, `PUT`, `DELETE`), chat en tiempo real. |
-| **Cliente Estándar** | `cliente@store.com` | `cliente123` | `$2b$10$werhYYh/ovBqlYDeRHPSoO7wEab71wsGYBXnhVtPMtq/XalmTxixq` | Lectura de catálogo (`GET /products`), consulta de estadísticas personales y chat en tiempo real. |
+| **Administrador** | `admin@ecohome.com` | `admin123` | `$2b$10$./THOfyDyMIHPZnXhQau3u3FOj1japxJ80nq/wqK2sZtZOhcuASDu` | Acceso total: Crear, editar y eliminar productos (`POST`, `PUT`, `DELETE`), chat en tiempo real. |
+| **Cliente Estándar** | `cliente@ecohome.com` | `cliente123` | `$2b$10$werhYYh/ovBqlYDeRHPSoO7wEab71wsGYBXnhVtPMtq/XalmTxixq` | Lectura de catálogo (`GET /products`), consulta de estadísticas personales y chat en tiempo real. |
 
 ---
 
